@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8.9 FATAL_ERROR)
 
-set(CPM_MODULE_NAME adolc)
+set(CPM_MODULE_NAME eigen)
 
 # initialize
 if(NOT EXISTS ${CMAKE_CURRENT_BINARY_DIR}/init.cmake)
@@ -13,7 +13,7 @@ CPM_ForceOnlyOneModuleVersion()
 
 CPM_InitModule(${CPM_MODULE_NAME})
 
-# includ emercural and download eigen
+# include mercurial helpers and download eigen
 include(mercurial.cmake)
 ensure_hg_repo_is_current("https://bitbucket.org/eigen/eigen" "${CMAKE_CURRENT_SOURCE_DIR}/eigen" "3.2.0")
 

@@ -2,7 +2,7 @@ find_package(Hg)
 
 function(clone_hg_repo repo dir tag)
 
-
+message("cloning hg repository ${repo}@${tag} to ${dir}")
 
  set (error_code 1)
  set(number_of_tries 0)
@@ -38,6 +38,7 @@ if(error_code)
 endfunction()
 
 function(update_hg_repo dir tag)
+ message("updating hg repository ${dir}@${tag}")
  execute_process(
  COMMAND "${HG_EXECUTABLE}" update
  WORKING_DIRECTORY "${dir}"
