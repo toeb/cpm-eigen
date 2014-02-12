@@ -14,8 +14,15 @@ CPM_ForceOnlyOneModuleVersion()
 CPM_InitModule(${CPM_MODULE_NAME})
 
 # include mercurial helpers and download eigen
-include(mercurial.cmake)
-ensure_hg_repo_is_current("https://bitbucket.org/eigen/eigen" "${CMAKE_CURRENT_SOURCE_DIR}/eigen" "3.2.0")
+CPM_EnsureRepoIsCurrent(
+    TARGET_DIR "${CMAKE_CURRENT_SOURCE_DIR}/eigen"            # Required - Directory in which to place repository.
+    HG_REPOSITORY "https://bitbucket.org/eigen/eigen"         # Git repository to clone and keep up to date.
+    HG_TAG  "3.2.0"               # Git tag to checkout.   
+    USE_CACHING 1              # Enables caching of repositories if the user 
+                                 # has specified CPM_MODULE_CACHING_DIR.
+                                 # Not enabled by default.
+    )
+
 
 
 CPM_ExportAdditionalIncludeDir("${CMAKE_CURRENT_SOURCE_DIR}/eigen")
